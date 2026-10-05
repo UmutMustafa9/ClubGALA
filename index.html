@@ -13,22 +13,30 @@
             <a href="#" class="logo" id="homeLogo">Club<span>GALA</span></a>
             <nav class="nav-links">
                 <a href="#" id="homeLink">Ana Sayfa</a>
-                <a href="#">Koleksiyonlar</a>
-                <a href="#">İletişim</a>
+                <a href="#" id="squadBuilderLink">Kadro Kur</a>
+                <a href="#" id="galaDraftLink">GalaDraft</a>
+                <a href="#" id="collectionsLink">Koleksiyonlar</a>
             </nav>
         </div>
     </header>
 
     <main class="container main-content">
         
+        <!-- 1. EN ÜSTTE BAŞLIK VE ALTINDA ARAMA ÇUBUĞU -->
         <section class="controls-section" id="heroSection">
             <h1 class="page-title">Yıldız Oyuncu Koleksiyonları</h1>
             <p class="page-subtitle">Ürünlerini ve koleksiyonunu incelemek istediğiniz yıldızı seçin</p>
+            
+            <div style="margin-top: 20px;">
+                <input type="text" id="playerSearchInput" placeholder="Oyuncu ara..." class="search-input">
+            </div>
         </section>
 
+        <!-- 2. ARAMANIN ALTINDA OYUNCU KARTLARI -->
         <section class="players-selection-grid" id="playersSelectionGrid">
         </section>
 
+        <!-- 3. DETAY BÖLÜMÜ -->
         <section class="detail-section" id="detailSection" style="display: none;">
             <div class="detail-header">
                 <button class="back-btn" id="backToHomeBtn">&larr; Tüm Oyunculara Dön</button>
@@ -36,6 +44,196 @@
             </div>
             <div class="posts-grid" id="productsContainer"></div>
         </section>
+
+        <!-- 4. SERBEST KADRO KURMA BÖLÜMÜ -->
+        <section class="squad-section" id="squadSection" style="display: none;">
+            <div class="squad-header">
+                <button class="back-btn" id="backFromSquadBtn">&larr; Ana Sayfaya Dön</button>
+                <h2>ClubGALA Kadro Kurucu (4-2-3-1)</h2>
+            </div>
+
+            <div class="pitch-container">
+                <div class="football-pitch">
+                    <div class="pitch-line center-circle"></div>
+                    <div class="pitch-line center-line"></div>
+
+                    <!-- Forvet -->
+                    <div class="slot-row">
+                        <div class="pitch-slot" onclick="openSquadModal('st')">
+                            <img id="squad-img-st" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">ST</span>
+                            <span class="slot-name" id="squad-slot-st">Oyuncu Seç</span>
+                        </div>
+                    </div>
+
+                    <!-- Ofansif Kanatlar & 10 Numara -->
+                    <div class="slot-row">
+                        <div class="pitch-slot" onclick="openSquadModal('lw')">
+                            <img id="squad-img-lw" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">SLK</span>
+                            <span class="slot-name" id="squad-slot-lw">Oyuncu Seç</span>
+                        </div>
+                        <div class="pitch-slot" onclick="openSquadModal('cam')">
+                            <img id="squad-img-cam" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">OOS</span>
+                            <span class="slot-name" id="squad-slot-cam">Oyuncu Seç</span>
+                        </div>
+                        <div class="pitch-slot" onclick="openSquadModal('rw')">
+                            <img id="squad-img-rw" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">SĞK</span>
+                            <span class="slot-name" id="squad-slot-rw">Oyuncu Seç</span>
+                        </div>
+                    </div>
+
+                    <!-- Orta Saha -->
+                    <div class="slot-row">
+                        <div class="pitch-slot" onclick="openSquadModal('cm1')">
+                            <img id="squad-img-cm1" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">OS</span>
+                            <span class="slot-name" id="squad-slot-cm1">Oyuncu Seç</span>
+                        </div>
+                        <div class="pitch-slot" onclick="openSquadModal('cm2')">
+                            <img id="squad-img-cm2" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">OS</span>
+                            <span class="slot-name" id="squad-slot-cm2">Oyuncu Seç</span>
+                        </div>
+                    </div>
+
+                    <!-- Defans -->
+                    <div class="slot-row">
+                        <div class="pitch-slot" onclick="openSquadModal('lb')">
+                            <img id="squad-img-lb" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">SLB</span>
+                            <span class="slot-name" id="squad-slot-lb">Oyuncu Seç</span>
+                        </div>
+                        <div class="pitch-slot" onclick="openSquadModal('cb1')">
+                            <img id="squad-img-cb1" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">STP</span>
+                            <span class="slot-name" id="squad-slot-cb1">Oyuncu Seç</span>
+                        </div>
+                        <div class="pitch-slot" onclick="openSquadModal('cb2')">
+                            <img id="squad-img-cb2" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">STP</span>
+                            <span class="slot-name" id="squad-slot-cb2">Oyuncu Seç</span>
+                        </div>
+                        <div class="pitch-slot" onclick="openSquadModal('rb')">
+                            <img id="squad-img-rb" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">SĞB</span>
+                            <span class="slot-name" id="squad-slot-rb">Oyuncu Seç</span>
+                        </div>
+                    </div>
+
+                    <!-- Kaleci -->
+                    <div class="slot-row">
+                        <div class="pitch-slot" onclick="openSquadModal('gk')">
+                            <img id="squad-img-gk" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">KL</span>
+                            <span class="slot-name" id="squad-slot-gk">Oyuncu Seç</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. GALADRAFT BÖLÜMÜ (3 KARTLI & KİLİTLEMELİ) -->
+        <section class="squad-section" id="draftSection" style="display: none;">
+            <div class="squad-header">
+                <button class="back-btn" id="backFromDraftBtn">&larr; Ana Sayfaya Dön</button>
+                <h2>GalaDraft Simülatörü</h2>
+                <button class="back-btn" id="resetDraftBtn" style="border-color:#fdb913; margin-left:auto;">Draftı Sıfırla</button>
+            </div>
+
+            <div class="pitch-container">
+                <div class="football-pitch">
+                    <div class="pitch-line center-circle"></div>
+                    <div class="pitch-line center-line"></div>
+
+                    <!-- Forvet -->
+                    <div class="slot-row">
+                        <div class="pitch-slot" onclick="openDraftModal('st')">
+                            <img id="draft-img-st" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">ST</span>
+                            <span class="slot-name" id="draft-slot-st">Draft</span>
+                        </div>
+                    </div>
+
+                    <!-- Ofansif Kanatlar & 10 Numara -->
+                    <div class="slot-row">
+                        <div class="pitch-slot" onclick="openDraftModal('lw')">
+                            <img id="draft-img-lw" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">SLK</span>
+                            <span class="slot-name" id="draft-slot-lw">Draft</span>
+                        </div>
+                        <div class="pitch-slot" onclick="openDraftModal('cam')">
+                            <img id="draft-img-cam" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">OOS</span>
+                            <span class="slot-name" id="draft-slot-cam">Draft</span>
+                        </div>
+                        <div class="pitch-slot" onclick="openDraftModal('rw')">
+                            <img id="draft-img-rw" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">SĞK</span>
+                            <span class="slot-name" id="draft-slot-rw">Draft</span>
+                        </div>
+                    </div>
+
+                    <!-- Orta Saha -->
+                    <div class="slot-row">
+                        <div class="pitch-slot" onclick="openDraftModal('cm1')">
+                            <img id="draft-img-cm1" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">OS</span>
+                            <span class="slot-name" id="draft-slot-cm1">Draft</span>
+                        </div>
+                        <div class="pitch-slot" onclick="openDraftModal('cm2')">
+                            <img id="draft-img-cm2" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">OS</span>
+                            <span class="slot-name" id="draft-slot-cm2">Draft</span>
+                        </div>
+                    </div>
+
+                    <!-- Defans -->
+                    <div class="slot-row">
+                        <div class="pitch-slot" onclick="openDraftModal('lb')">
+                            <img id="draft-img-lb" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">SLB</span>
+                            <span class="slot-name" id="draft-slot-lb">Draft</span>
+                        </div>
+                        <div class="pitch-slot" onclick="openDraftModal('cb1')">
+                            <img id="draft-img-cb1" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">STP</span>
+                            <span class="slot-name" id="draft-slot-cb1">Draft</span>
+                        </div>
+                        <div class="pitch-slot" onclick="openDraftModal('cb2')">
+                            <img id="draft-img-cb2" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">STP</span>
+                            <span class="slot-name" id="draft-slot-cb2">Draft</span>
+                        </div>
+                        <div class="pitch-slot" onclick="openDraftModal('rb')">
+                            <img id="draft-img-rb" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">SĞB</span>
+                            <span class="slot-name" id="draft-slot-rb">Draft</span>
+                        </div>
+                    </div>
+
+                    <!-- Kaleci -->
+                    <div class="slot-row">
+                        <div class="pitch-slot" onclick="openDraftModal('gk')">
+                            <img id="draft-img-gk" class="slot-avatar" style="display: none;" alt="Oyuncu">
+                            <span class="slot-role">KL</span>
+                            <span class="slot-name" id="draft-slot-gk">Draft</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ORTAK MODAL -->
+        <div id="playerModal" class="player-modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closePlayerModal()">&times;</span>
+                <h3 id="modalTitle">Oyuncu Seç</h3>
+                <div id="modalPlayersList"></div>
+            </div>
+        </div>
 
     </main>
 
